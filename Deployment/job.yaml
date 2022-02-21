@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: calculator-$ID
+spec:
+  template:
+    metadata:
+      name: calculator
+    spec:
+      containers:
+        - name: calculater
+          image: fbaensch/calculator_test:1.1
+          imagePullPolicy: Always
+          env:
+            - name: JOB_ID
+              value: $ID
+#          command:
+#            -
+      restartPolicy: Never

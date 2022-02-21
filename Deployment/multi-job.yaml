@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: calculator
+  labels:
+    jobgroup: calculator
+spec:
+  parallelism: 2
+  completions: 2
+  completionMode: Indexed
+  template:
+    metadata:
+      name: calculator
+    spec:
+      containers:
+        - name: calculater
+          image: fbaensch/calculator_test:1.2
+          imagePullPolicy: Always
+          env:
+            - name: JOB_ID
+              value: '1'
+      #          command:
+      #            -
+      restartPolicy: Never

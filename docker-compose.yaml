@@ -1,0 +1,11 @@
+version: "3"
+services:
+    docker_test:
+      build: ""
+      environment:
+        OUTPUT_PATH: output
+      volumes:
+        - "output:/app/output/"
+
+volumes:
+  output:
